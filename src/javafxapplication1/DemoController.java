@@ -14,6 +14,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 /**
@@ -23,43 +25,34 @@ import javafx.scene.layout.VBox;
  */
 public class DemoController implements Initializable {
 
-    @FXML
     private VBox keypad;
-    @FXML
     private PasswordField display;
+    @FXML
+    private AnchorPane mainPane;
+    @FXML
+    private AnchorPane navigationPane;
+    @FXML
+    private Button profileButton;
+    @FXML
+    private AnchorPane homePane;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-    }
-
-    @FXML
-    private void keyTyped(ActionEvent event) {
-        String current = display.getText();
-        String newValue = ((Button) event.getSource()).getText();
-        display.setText(current + newValue);
-    }
-
-    @FXML
-    private void delete(ActionEvent event) {
-        display.setText("");
-
-    }
-
-    @FXML
-    private void done(ActionEvent event) {
-        boolean b = JavaFXApplication1.validate(display.getText());
-        if(b){
-            FadeTransition t = new FadeTransition(new Duration(1000), keypad);
-            t.setFromValue(1);
-            t.setToValue(0);
-            t.play();
-        }
         
+    }
+    
+    @FXML
+    private void profileButton_exited(MouseEvent event) {
+        
+    }
 
+    @FXML
+    private void profileButton_move(MouseEvent event) {
+        profileButton.getStyleClass().clear();
+        profileButton.getStyleClass().add("profileButtonhover");
     }
 
 }
